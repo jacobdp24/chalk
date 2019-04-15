@@ -1,0 +1,47 @@
+{{"decoupled-map"|googlemap_js(32.7157, -117.1611, markers=[(32.7157, -117.1611)])}}
+{{locations.js}}
+
+{% extends "bootstrap/base.html" %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{url_for('.static', filename='css/main.css')}}">
+{% endblock %}
+
+{% block title %}
+
+    {% if title %}{{ title }} - Microblog{% else %}Welcome to Microblog{% endif %}
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-default">
+    </nav>
+{% endblock %}
+
+{% block content %}
+
+<div class="nav-side-menu">
+    <div class="brand">Chalk</div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+    <div class="menu-list">
+        <ul id="menu-content" class="menu-content collapse out">
+            {% for k in places %}
+              <li>
+                  <!-- here we can create listener -->
+                  <a href="/location/{{k.id}}">
+                      <i class="fa fa-dashboard fa-lg">{{k.name}}</i>
+                  </a>
+              </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class="container" id="main">
+    <div class="row">
+        <div class="col-md-12">
+            {{locations.html}}
+        </div>
+    </div>
+</div>
+{% endblock %}

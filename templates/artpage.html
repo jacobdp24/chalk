@@ -1,0 +1,42 @@
+{% extends "bootstrap/base.html" %}
+{% block scripts %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="{{url_for('.static', filename='scripts/main.js')}}"></script>
+{{super()}}
+{% endblock %}
+{% block navbar %}
+    <nav class="navbar navbar-default">
+
+    </nav>
+{% endblock %}
+{% block content %}
+<div>
+    <h1 style="padding: 0 40px;">{{ name }}</h1>
+</div>
+{% for k, v in artist.items() %}
+<div class="list-group">
+        <div class="list-group-item">
+            <div class=row>
+                <div class="col-md-1" style="text-align: center;">
+                    <!-- <button id="clickme">Click me: 0</button> -->
+                    <button id="clickmeup" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-chevron-up"></span></button>
+                    <div id="output">0</div>
+                    <button id="clickmedown" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                </div>
+                <div class="col-md-3">
+                        <img src="/static/images/crosswalk{{k}}.jpg" alt="image not found" width="100%" height="100%"/>
+                </div>
+                <div class="col-md-8">
+                    <h2>{{v}}</h2>
+                        <ul style="list-style-type:none">
+                            <li><h3>inspiration:</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></li>
+                            <li><h4>deviant art account:</h4><p><a href=https://www.deviantart.com/ayyasap>account here</a></p></li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+</div>
+{% endfor %}
+{% endblock %}
